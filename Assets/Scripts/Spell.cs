@@ -21,11 +21,11 @@ public class Spell : MonoBehaviour {
 	public GameObject hat_symbol;
 	public GameObject cloak_symbol;
 
-    public GameObject arrivedLayer;
+    public GameObject spinLayer;
     public GameObject cLayer;
     public GameObject ccLayer;
     public GameObject bookLayer;
-    public GameObject checkLayer;
+
 
     // used to determine background colors based on player numbers
     static Dictionary<int,Color> background = new Dictionary<int, Color> {
@@ -41,10 +41,9 @@ public class Spell : MonoBehaviour {
         background_color.color = background[manager.player_num];
 
         cLayer.SetActive(false);
-        arrivedLayer.SetActive(false);
+        spinLayer.SetActive(false);
         ccLayer.SetActive(false);
         bookLayer.SetActive(false);
-        checkLayer.SetActive(false);
     }
 
     void OnDisable()
@@ -54,10 +53,10 @@ public class Spell : MonoBehaviour {
         background_color.color = background[manager.player_num];
 
         cLayer.SetActive(false);
-        arrivedLayer.SetActive(false);
+        spinLayer.SetActive(false);
         ccLayer.SetActive(false);
         bookLayer.SetActive(false);
-        checkLayer.SetActive(false);
+
     }
 
     void Start()
@@ -65,10 +64,10 @@ public class Spell : MonoBehaviour {
         manager = GameObject.FindGameObjectWithTag("manager").GetComponent<DisplayCanvas>();
         background_color.color = background[manager.player_num];
         cLayer.SetActive(false);
-        arrivedLayer.SetActive(false);
+        spinLayer.SetActive(false);
         ccLayer.SetActive(false);
         bookLayer.SetActive(false);
-        checkLayer.SetActive(false);
+       
     }
 
     void Update() {
@@ -90,9 +89,9 @@ public class Spell : MonoBehaviour {
         if (nav.Substring(0,3) == "cur")
         {
             bookLayer.SetActive(true);
-            checkLayer.SetActive(true);
+            spinLayer.SetActive(true);
             cLayer.SetActive(false);
-            arrivedLayer.SetActive(false);
+            spinLayer.SetActive(false);
             ccLayer.SetActive(false);
 
             //curPos1disPos1
@@ -127,32 +126,32 @@ public class Spell : MonoBehaviour {
         else 
         {
             bookLayer.SetActive(false);
-            checkLayer.SetActive(false);
+            spinLayer.SetActive(false);
         }
 
         if(nav == "Clockwise")
         {
             cLayer.SetActive(true);
-            arrivedLayer.SetActive(false);
+            spinLayer.SetActive(false);
             ccLayer.SetActive(false);
         }
         else if (nav == "Counter-clockwise")
         {
             cLayer.SetActive(false);
-            arrivedLayer.SetActive(false);
+            spinLayer.SetActive(false);
             ccLayer.SetActive(true);
         }
         else if (nav == "Arrived")
         {
             cLayer.SetActive(false);
-            arrivedLayer.SetActive(true);
+            spinLayer.SetActive(true);
             ccLayer.SetActive(false);
             StartCoroutine(checkpointArrived());
         }
         else
         {
             cLayer.SetActive(false);
-            arrivedLayer.SetActive(false);
+            spinLayer.SetActive(false);
             ccLayer.SetActive(false); 
         }
     }

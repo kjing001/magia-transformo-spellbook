@@ -104,6 +104,7 @@ public class DisplayCanvas : MonoBehaviour {
         
         if (msg != "clear")
         {
+            
             if ((msg.Contains("Hat")) || (msg.Contains("Cloak")))
             {
                 if (msg == "Null Hat")
@@ -149,19 +150,19 @@ public class DisplayCanvas : MonoBehaviour {
         // switch from server command
         if(lastState != gameState)
         {
-            if (gameState == "spell list")
+            if ((gameState == "spell list") || (msg == "spell list") ) 
             {
                 SwitchCanvas(1);
             }
-            else if (gameState == "scan item")
+            else if ( (gameState == "scan item") || (msg == "scan item") )
             {
                 SwitchCanvas(2);
             }
-            else if (gameState == "spell casting")
+            else if ( (gameState == "spell casting") || (msg == "spell casting"))
             {
                 SwitchCanvas(3);
             }
-            else if (gameState == "result")
+            else if ( (gameState == "result") || (msg == "result"))
             {
                 SwitchCanvas(4);
             }
